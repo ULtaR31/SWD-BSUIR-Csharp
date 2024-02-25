@@ -416,4 +416,32 @@ class Ring<T> where T : IComparable<T>
             Console.WriteLine("May be invalid type\n" + e.Message);
         }
     }
+
+    // класс итератор
+
+    public class RingIterator
+    {
+        private Node current;
+        private Ring<T> ring;
+        public RingIterator(Ring<T> ring)
+        {
+            this.ring = ring;
+            current = ring.Head;
+        }
+        public bool MoveNext()
+        {
+            if (current == null)
+                return false;
+            current = current.getNext();
+            return true;
+        }
+        public T Current
+        {
+            get
+            {
+                return current.getData();
+            }
+        }
+    }
+
 }
